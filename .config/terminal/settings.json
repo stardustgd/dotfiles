@@ -48,6 +48,7 @@
             "keys": "ctrl+t"
         }
     ],
+    "alwaysShowTabs": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -56,16 +57,18 @@
         "defaults": 
         {
             "antialiasingMode": "grayscale",
-            "colorScheme": "One Half Dark (Custom)",
+            "colorScheme": "stardust",
             "font": 
             {
                 "face": "Hack NF",
                 "size": 14
             },
-            "opacity": 50,
+            "intenseTextStyle": "bright",
+            "opacity": 90,
             "padding": "10",
             "scrollbarState": "hidden",
-            "useAcrylic": true
+            "suppressApplicationTitle": false,
+            "useAcrylic": false
         },
         "list": 
         [
@@ -378,7 +381,32 @@
             "selectionBackground": "#FFFFFF",
             "white": "#C0C0C0",
             "yellow": "#808000"
+        },
+        {
+            "background": "#10151A",
+            "black": "#0C0C0C",
+            "blue": "#2C5E84",
+            "brightBlack": "#767676",
+            "brightBlue": "#366184",
+            "brightCyan": "#48B2AE",
+            "brightGreen": "#199054",
+            "brightPurple": "#7D4EAC",
+            "brightRed": "#DC3016",
+            "brightWhite": "#ECEFF1",
+            "brightYellow": "#FFAB23",
+            "cursorColor": "#ECEFF1",
+            "cyan": "#34B2AC",
+            "foreground": "#ECEFF1",
+            "green": "#039047",
+            "name": "stardust",
+            "purple": "#7440AC",
+            "red": "#DC2109",
+            "selectionBackground": "#ECEFF1",
+            "white": "#ECEFF1",
+            "yellow": "#FF9900"
         }
     ],
+    "showTabsInTitlebar": true,
+    "tabWidthMode": "titleLength",
     "useAcrylicInTabRow": true
 }
