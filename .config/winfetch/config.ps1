@@ -21,7 +21,7 @@ function info_custom_os {
 		title = " ​ ​  "
 		
 		# Removes "[64-bit]" from "Windows 11 Pro"
-		content = "$($os.Caption.TrimStart('Microsoft ')) [$($os.OSArchitecture)]".Remove(15)
+		content = "$($os.Caption.TrimStart('Microsoft ')) [$($os.OSArchitecture)]".Trim("[64-bit]")
 		}
 }
 
