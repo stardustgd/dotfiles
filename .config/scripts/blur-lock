@@ -1,9 +1,0 @@
-PICTURE=/home/basti/.wallpapers/yuru-fuji.jpg
-SCREENSHOT="scrot -z $PICTURE"
-
-BLUR="6x5"
-
-$SCREENSHOT
-convert $PICTURE -blur $BLUR $PICTURE
-i3lock -i $PICTURE
-rm $PICTURE
