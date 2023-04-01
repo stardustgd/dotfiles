@@ -1,5 +1,5 @@
 # dotfiles
-My dotfiles for Windows 11
+My dotfiles for Windows 11 / Arch Linux
 
 ### Specs
 
