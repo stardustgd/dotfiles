@@ -146,7 +146,8 @@ for_window [class="^.*"] border pixel 2
 
 # Set inner/outer gaps
 gaps inner 10
-gaps outer 15
+gaps outer 5
+# gaps outer 15
 
 # Smart borders
 smart_borders on
@@ -305,7 +306,7 @@ client.focused_inactive	$ibgcolor	$ibgcolor		$itextcolor	$ibgcolor
 client.urgent		$ubgcolor	$ubgcolor		$textcolor	$ubgcolor
 
 # Display Wallpaper
-exec_always feh --bg-fill /home/basti/.wallpapers/yuru-fuji.jpg
+exec_always feh --bg-fill $HOME/.wallpapers/yuru-fuji.jpg
 
 # Betterlockscreen
 bindsym $mod+x exec "betterlockscreen --lock"
@@ -334,7 +335,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
 bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
-bindsym --release Shift+Print exec "scregcp /home/basti/Pictures/screenshots/"
+bindsym --release Shift+Print exec "scregcp $HOME/Pictures/screenshots/"
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="^Friends$"] floating enable
