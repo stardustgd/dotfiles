@@ -1,7 +1,14 @@
 # dotfiles
-My dotfiles for Windows 11 / Arch Linux
+My dotfiles for Arch Linux / Windows 11
 
-### Specs
+![Screenshot](https://imgur.com/a/A1u3aLz)
+
+### Laptop Specs
+
+- Intel i7-10750H
+- GTX 1660 Ti
+
+### Windows PC Specs
 
 - Ryzen 5 3600
 - RTX 2060
