@@ -1,7 +1,7 @@
 # dotfiles
 My dotfiles for Arch Linux / Windows 11
 
-![Screenshot](https://imgur.com/a/A1u3aLz)
+![Screenshot](https://i.imgur.com/PlpVSi5.png)
 
 ### Laptop Specs
 
