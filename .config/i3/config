@@ -312,7 +312,7 @@ client.focused_inactive	$ibgcolor	$ibgcolor		$itextcolor	$ibgcolor
 client.urgent		$ubgcolor	$ubgcolor		$textcolor	$ubgcolor
 
 # Display Wallpaper
-exec_always feh --bg-fill $HOME/.wallpapers/yuru-fuji.jpg
+exec_always feh --bg-fill $HOME/.wallpapers/yuru-chill.jpg
 
 # Betterlockscreen
 bindsym $mod+x exec "betterlockscreen --lock"
@@ -334,11 +334,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh brightness_down
 
-# bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 1 && notify-send --urgency=low -r 9999 -t 3000 "󰃠 Increase" "Brightness: $((($(brightnessctl g)*100)/$(brightnessctl m)))%"
-# bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 1 && notify-send --urgency=low -r 9999 -t 3000 "󰃠 Decrease" "Brightness: $((($(brightnessctl g)*100)/$(brightnessctl m)))%"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_up
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_down
 
 # Screenshot
-bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' && notify-send -u low -r 9995 -i ~/Pictures/screenshots/screenshot_20230128_201951.png "Screenshot" "Selection saved" # Area selection
 bindsym --release Shift+Print exec "scregcp $HOME/Pictures/screenshots/"
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
