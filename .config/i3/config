@@ -338,7 +338,7 @@ bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/volume_
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_down
 
 # Screenshot
-bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' && notify-send -u low -r 9995 -i ~/Pictures/screenshots/screenshot_20230128_201951.png "Screenshot" "Selection saved" # Area selection
+bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 bindsym --release Shift+Print exec "scregcp $HOME/Pictures/screenshots/"
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
