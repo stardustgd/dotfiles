@@ -11,29 +11,58 @@ function get_remaining {
 function get_discharge_icon {
     percent=$(get_percent)
 
-    if [ "$percent" -gt 95 ] ; then
+    if [ "$percent" -ge 95 ] ; then
         icon=~/.local/share/icons/battery.png
-    elif [ "$percent" -gt 90 ] ; then
+    elif [ "$percent" -ge 90 ] ; then
         icon=~/.local/share/icons/battery-90.png
-    elif [ "$percent" -gt 80 ] ; then
+    elif [ "$percent" -ge 80 ] ; then
         icon=~/.local/share/icons/battery-80.png
-    elif [ "$percent" -gt 70 ] ; then
+    elif [ "$percent" -ge 70 ] ; then
         icon=~/.local/share/icons/battery-70.png
-    elif [ "$percent" -gt 60 ] ; then
+    elif [ "$percent" -ge 60 ] ; then
         icon=~/.local/share/icons/battery-60.png
-    elif [ "$percent" -gt 50 ] ; then
+    elif [ "$percent" -ge 50 ] ; then
         icon=~/.local/share/icons/battery-50.png
-    elif [ "$percent" -gt 40 ] ; then
+    elif [ "$percent" -ge 40 ] ; then
         icon=~/.local/share/icons/battery-40.png
-    elif [ "$percent" -gt 30 ] ; then
+    elif [ "$percent" -ge 30 ] ; then
         icon=~/.local/share/icons/battery-30.png
-    elif [ "$percent" -gt 20 ] ; then
+    elif [ "$percent" -ge 20 ] ; then
         icon=~/.local/share/icons/battery-20.png
     else
         icon=~/.local/share/icons/battery-10.png
     fi
 
     echo $icon
+}
+
+function get_charge_icon {
+    percent=$(get_percent)
+
+    if [ "$percent" -ge 95 ] ; then
+        icon=~/.local/share/icons/battery-charging.png
+    elif [ "$percent" -ge 90 ] ; then
+        icon=~/.local/share/icons/battery-charging-90.png
+    elif [ "$percent" -ge 80 ] ; then
+        icon=~/.local/share/icons/battery-charging-80.png
+    elif [ "$percent" -ge 70 ] ; then
+        icon=~/.local/share/icons/battery-charging-70.png
+    elif [ "$percent" -ge 60 ] ; then
+        icon=~/.local/share/icons/battery-charging-60.png
+    elif [ "$percent" -ge 50 ] ; then
+        icon=~/.local/share/icons/battery-charging-50.png
+    elif [ "$percent" -ge 40 ] ; then
+        icon=~/.local/share/icons/battery-charging-40.png
+    elif [ "$percent" -ge 30 ] ; then
+        icon=~/.local/share/icons/battery-charging-30.png
+    elif [ "$percent" -ge 20 ] ; then
+        icon=~/.local/share/icons/battery-charging-20.png
+    else
+        icon=~/.local/share/icons/battery-charging-10.png
+    fi
+
+    echo $icon
+    
 }
 
 function show_discharge {
@@ -44,8 +73,7 @@ function show_discharge {
 }
 
 function show_charge {
-    # get_discharge_icon
-    icon=~/.local/share/icons/battery-charging.png
+    get_charge_icon
     time_remaining=$(get_remaining)
 
     notify-send "Battery" "$time_remaining until charged" -i "$icon" -u low -r 9991 -t 3000
@@ -62,5 +90,9 @@ case $1 in
 
     get_icon)
         get_discharge_icon
+    ;;
+
+    get_charging_icon)
+        get_charge_icon
     ;;
 esac
