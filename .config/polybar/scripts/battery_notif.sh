@@ -11,7 +11,7 @@ function get_remaining {
 function get_discharge_icon {
     percent=$(get_percent)
 
-    if [ "$percent" -ge 95 ] ; then
+    if [ "$percent" -ge 99 ] ; then
         icon=~/.local/share/icons/battery.png
     elif [ "$percent" -ge 90 ] ; then
         icon=~/.local/share/icons/battery-90.png
@@ -39,7 +39,7 @@ function get_discharge_icon {
 function get_charge_icon {
     percent=$(get_percent)
 
-    if [ "$percent" -ge 95 ] ; then
+    if [ "$percent" -ge 99 ] ; then
         icon=~/.local/share/icons/battery-charging.png
     elif [ "$percent" -ge 90 ] ; then
         icon=~/.local/share/icons/battery-charging-90.png
@@ -65,6 +65,10 @@ function get_charge_icon {
     
 }
 
+function get_full_icon {
+    icon=~/.local/share/icons/battery-heart.png
+}
+
 function show_discharge {
     get_discharge_icon
     time_remaining=$(get_remaining)
@@ -79,6 +83,11 @@ function show_charge {
     notify-send "Battery" "$time_remaining until charged" -i "$icon" -u low -r 9991 -t 3000
 }
 
+function show_full {
+    get_full_icon
+    notify-send "Battery" "Battery is fully charged." -i "$icon" -u low -r 9991 -t 3000
+}
+
 case $1 in
     discharging)
         show_discharge
@@ -86,6 +95,10 @@ case $1 in
 
     charging)
         show_charge
+    ;;
+
+    full)
+        show_full
     ;;
 
     get_icon)
