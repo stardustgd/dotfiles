@@ -1,7 +1,6 @@
 [global]
     monitor = 0
     follow = none
-    width = 350
     height = 300
     origin = top-right
     offset = 10x50
@@ -10,7 +9,7 @@
     progress_bar = true
     progress_bar_height = 10
     progress_bar_frame_width = 1
-    progress_bar_min_width = 400
+    progress_bar_min_width = 200
     progress_bar_max_width = 400
     progress_bar_corner_radius = 5
     highlight = "#5e81ac"
@@ -22,7 +21,7 @@
     text_icon_padding = 15
     frame_width = 2
     frame_color = "#81a1c1"
-    gap_size = 0
+    gap_size = 5
     separator_color = frame
     sort = yes
     idle_threshold = 120
