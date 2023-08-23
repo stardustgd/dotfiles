@@ -1,7 +1,7 @@
 return {
   {
     "shaunsingh/nord.nvim",
-    require('nord').set()
+    -- require('nord').set()
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -9,5 +9,8 @@ return {
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" }
   },
-  "xiyaowong/transparent.nvim",
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false
+  }
 }
