@@ -14,6 +14,9 @@ output * bg ~/.wallpapers/yuru-chill.jpg fill
 # Betterlockscreen
 bindsym $mod+x exec "betterlockscreen --lock"
 
+# Start dunst
+exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
+
 # Touchpad configuration
 input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
         dwt disabled 
@@ -21,6 +24,12 @@ input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
         natural_scroll disabled 
         middle_emulation disabled 
 }
+
+# Idle configuration
+        exec swayidle -w \
+                 timeout 300 'swaylock -f -c 2e3440' \
+                 timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+                 before-sleep 'swaylock -f -c 000000'
 
 #
 # Media keys:
