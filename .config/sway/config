@@ -4,9 +4,10 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu rofi -show run
+set $menu wofi --hide-scroll --allow-images | xargs swaymsg exec --
 
-font pango:Droid Sans Mono 14 
+# font pango:Droid Sans Mono 14 
+font pango:monospace 14 
 
 # Display Wallpaper
 output * bg ~/.wallpapers/yuru-chill.jpg fill
@@ -19,7 +20,7 @@ exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 
 # Touchpad configuration
 input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
-        dwt disabled 
+        dwt enabled 
         tap enabled
         natural_scroll disabled 
         middle_emulation disabled 
@@ -36,10 +37,8 @@ exec_always {
 
 # Idle configuration
         exec swayidle -w \
-                 timeout 300 'swaylock -f -c 2e3440' \
-                 timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-                 before-sleep 'swaylock -f -c 000000'
-
+                 timeout 300 'swaylock -f \
+                 before-sleep 'swaylock -f' \
 #
 # Media keys:
 #
