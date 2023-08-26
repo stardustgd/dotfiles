@@ -7,13 +7,13 @@ set $term alacritty
 set $menu wofi --hide-scroll --allow-images | xargs swaymsg exec --
 
 # font pango:Droid Sans Mono 14 
-font pango:monospace 14 
+font pango:monospace 1
 
 # Display Wallpaper
 output * bg ~/.wallpapers/yuru-chill.jpg fill
 
 # Betterlockscreen
-bindsym $mod+x exec "betterlockscreen --lock"
+bindsym $mod+x exec "swaylock -fF --effect-blur 10x10"
 
 # Start dunst
 exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
@@ -37,7 +37,7 @@ exec_always {
 
 # Idle configuration
         exec swayidle -w \
-                 timeout 300 'swaylock -f \
+                 timeout 3 'swaylock -f' \
                  before-sleep 'swaylock -f' \
 #
 # Media keys:
@@ -174,13 +174,14 @@ exec_always {
         bindsym $mod+Shift+0 move container to workspace number $ws10
         
         # Disable window titlebars entirely
-        for_window [class="^.*"] border pixel 2
+        default_border pixel 2
+        # for_window [class="^.*"] border pixel 2
         
         # Assign programs to workspaces
         assign [app_id="firefox"] → 2
         assign [class="discord"] → 3
-        assign [class="zoom"] → 4
         assign [class="Spotify"] → 5
+        assign [class="zoom"] → 9
         assign [class="Steam"] → 10
 
         # https://github.com/ValveSoftware/steam-for-linux/issues/1040
@@ -249,8 +250,8 @@ bar {
         set $ibgcolor   #2e3440
         set $fws	#5e81ac80
         set $barcolor   #2e3440cc 
-        set $textcolor  #ffffff
-        set $itextcolor #969696
+        set $textcolor  #2e3440
+        set $itextcolor #5e81ac
         set $ubgcolor   #bf616a 
 
         #			Border		Background		Text		Indicator
