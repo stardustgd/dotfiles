@@ -4,7 +4,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu wofi --hide-scroll --allow-images | xargs swaymsg exec --
+set $menu rofi -show run
 
 # font pango:Droid Sans Mono 14 
 font pango:monospace 1
@@ -202,7 +202,9 @@ exec_always {
         for_window [class="zoom" title="Zoom Meeting"] floating disable
 
         # Set programs to float
+        floating_maximum_size 1600 x 900
         for_window [app_id="imv"] floating enable
+        for_window [app_id="zathura"] floating enable, resize set 1600 900
 #
 # Resizing containers:
 #
