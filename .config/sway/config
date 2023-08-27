@@ -36,9 +36,9 @@ exec_always {
 }
 
 # Idle configuration
-        exec swayidle -w \
-                 timeout 3 'swaylock -f' \
-                 before-sleep 'swaylock -f' \
+exec swayidle -w \
+         timeout 300 'swaylock -fF --effect-blur 10x10 --fade-in 0.5' \
+         before-sleep 'swaylock -fF --effect-blur 10x10 --fade-in 0.5' \
 #
 # Media keys:
 #
@@ -175,11 +175,11 @@ exec_always {
         
         # Disable window titlebars entirely
         default_border pixel 2
-        # for_window [class="^.*"] border pixel 2
         
         # Assign programs to workspaces
         assign [app_id="firefox"] → 2
         assign [class="discord"] → 3
+        assign [app_id="Thunar"] → 4
         assign [class="Spotify"] → 5
         assign [class="zoom"] → 9
         assign [class="Steam"] → 10
@@ -205,6 +205,7 @@ exec_always {
         floating_maximum_size 1600 x 900
         for_window [app_id="imv"] floating enable
         for_window [app_id="zathura"] floating enable, resize set 1600 900
+        for_window [app_id="pavucontrol"] floating enable
 #
 # Resizing containers:
 #
