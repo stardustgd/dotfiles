@@ -1,35 +1,36 @@
 # dotfiles
-My dotfiles for Arch Linux / Windows 11
 
-![Screenshot](https://i.imgur.com/PlpVSi5.png)
+```markdown
+My dotfiles for Arch Linux and Windows 11
+Work in progress...
+```
+
+![Screenshot](https://raw.githubusercontent.com/stardustgd/dotfiles/assets/screenshot.png)
 
 ### Laptop Specs
 
 - Intel i7-10750H
 - GTX 1660 Ti
 
-### Windows PC Specs
+## Showcase
 
-- Ryzen 5 3600
-- RTX 2060
-- 32 GB 3600GHz
+Some more screenshots of my setup!
 
-## [Terminal](https://github.com/microsoft/terminal)
+<details>
 
-Using [craftzdog's](https://youtu.be/5-aK2_WwrmM) PowerShell customization as a base
+<summary>📷 Preview</summary>
+<br>
 
-- [Oh My Posh](https://ohmyposh.dev/)
-- [Terminal Icons](https://github.com/devblackops/Terminal-Icons)
-- [neofetch](https://github.com/dylanaraps/neofetch)
-- [winfetch](https://github.com/lptstr/winfetch)
-- [PSFzf](https://github.com/kelleyma49/PSFzf)
-- [PSReadLine](https://learn.microsoft.com/en-us/powershell/module/psreadline/?view=powershell-7.3)
-- [z](https://www.powershellgallery.com/packages/z)
+*Neovim with htop:*
 
-## [Neovim](https://neovim.io)
+![screenshot](https://raw.githubusercontent.com/stardustgd/dotfiles/assets/screenshot1.png)
 
-Currently learning vim with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+*Rofi launcher*
 
-- [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
-- [xiyaowong/nvim-transparent](https://github.com/xiyaowong/nvim-transparent)
-- [shaunsingh/nord.nvim](https://github.com/shaunsingh/nord.nvim)
+![screenshot](https://raw.githubusercontent.com/stardustgd/dotfiles/assets/rofi.png)
+
+*Lockscreen with [swaylock-effects](https://github.com/mortie/swaylock-effects)*
+
+![screenshot](https://raw.githubusercontent.com/stardustgd/dotfiles/assets/lock.png)
+  
+</details>
