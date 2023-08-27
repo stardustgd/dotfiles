@@ -1,0 +1,78 @@
+{
+    "position": "top", 
+    "height": 30,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
+    // Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+         	"format-icons": {
+             		"1": "󰣇",
+             		"2": "󰈹",
+             		"3": "󰭹",
+             		"4": "󰉋",
+             		"5": "󰓇",
+             		"6": "󱈸",
+             		"7": "󰇘",
+             		"8": "󰖲",
+             		"9": "󰕧",
+             		"10": "󰓓"
+         }
+     },
+    "sway/mode": {
+        "format": " {}"
+    },
+	"custom/date": {
+    		"format": "󰸗 {}",
+		"interval": 3600,
+		"exec": "~/.config/waybar/scripts/waybar-date.sh"
+	},
+	"custom/power": {
+		"format": "󰐥",
+		"tooltip": false,
+		"on-click": "~/.config/rofi/scripts/powermenu_t2"
+	},
+	"clock": {
+		"format": "󰅐 {:%I:%M %p}",
+        	"tooltip-format": "<tt>{calendar}</tt>",
+        	"format-alt": "{:%m-%d-%Y}"
+	},
+	"battery": {
+	    "bat": "BAT0",
+        	"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "󰂄 {capacity}%",
+        	"format-plugged": "󰂄{capacity}%",
+        	"format-alt": "{icon} {time}",
+        	"format-full": "󱈑 {capacity}%",
+        	"interval": 10,
+        	"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+	},
+	"network": {
+        	"format-wifi": " {essid}",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "󰤮 Disconnected",
+        	"tooltip-format": "{essid}\r{ipaddr}"
+        	// "format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+        	"format-muted": "󰖁 Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
