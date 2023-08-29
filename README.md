@@ -1,7 +1,7 @@
 # dotfiles
 
 ```markdown
-My dotfiles for Arch Linux and Windows 11
+My dotfiles for Arch Linux
 Work in progress...
 ```
 
