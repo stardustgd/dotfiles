@@ -1,7 +1,7 @@
 {
     "position": "top", 
     "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/weather"],
     "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
@@ -21,6 +21,13 @@
              		"10": "󰓓"
          }
      },
+    "custom/weather": {
+       "format": "{}°",
+       "tooltip": true,
+       "interval": 3600,
+       "exec": "wttrbar --hide-conditions --main-indicator temp_F --fahrenheit --date-format \"%m/%d\"",
+       "return-type": "json"
+    },
     "sway/mode": {
         "format": " {}"
     },
@@ -42,8 +49,8 @@
 	"battery": {
 	    "bat": "BAT0",
         	"states": {
-            		"warning": 30,
-            		"critical": 15
+            		"warning": 20,
+            		"critical": 10
         	},
         	"format": "{icon} {capacity}%",
         	"format-charging": "󰂄 {capacity}%",
