@@ -3,7 +3,7 @@
     follow = none
     height = 300
     origin = top-right
-    offset = 10x50
+    offset = 14x15
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -25,7 +25,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 120
-    font = JetBrains Mono Nerd Font 16
+    font = JetBrains Mono Nerd Font 13
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -42,7 +42,6 @@
     icon_position = left
     min_icon_size = 48
     max_icon_size = 64
-    # icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/basti/.local/share/icons/dunst/
     icon_path = /home/basti/.local/share/icons
     sticky_history = yes
     history_length = 20
@@ -53,7 +52,7 @@
     class = Dunst
     corner_radius = 3
     ignore_dbusclose = false
-    force_xwayland = false
+    force_xwayland = false 
     force_xinerama = false
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
