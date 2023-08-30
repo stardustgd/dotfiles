@@ -13,7 +13,7 @@ font pango:monospace 1
 output * bg ~/.wallpapers/yuru-chill.jpg fill
 
 # Betterlockscreen
-bindsym $mod+x exec "swaylock -fF --effect-blur 10x10"
+bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5"
 
 # Start dunst
 exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
@@ -32,7 +32,7 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Nordic'
     gsettings set org.gnome.desktop.wm.preferences theme 'Nordic'
     gsettings set $gnome-schema icon-theme 'Papirus'
-    # gsettings set $gnome-schema cursor-theme 'Nordic'
+    # gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
 }
 
 # Idle configuration
@@ -43,7 +43,7 @@ exec swayidle -w \
 # Media keys:
 #
         # Audio control
-        bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+        bindsym XF86AudioMicMute exec --no-startup-id ~/.config/scripts/mic_mute.sh
         bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_up
         bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_down
         bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_mute
@@ -61,8 +61,10 @@ exec swayidle -w \
         bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_down
 
         # Screenshot
-        bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy    
-        bindsym Shift+Print exec grim - | wl-copy    
+        # bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy    
+        # bindsym Shift+Print exec grim - | wl-copy    
+        bindsym $mod+Shift+s exec ~/.config/scripts/screenshot.sh area
+        bindsym Shift+Print exec ~/.config/scripts/screenshot.sh screen
 
 ### Key bindings
 #
@@ -249,6 +251,7 @@ bar {
 #
 # Window colors:
 #
+        # set $bgcolor    #5e81ac
         set $bgcolor    #5e81ac
         set $ibgcolor   #2e3440
         set $fws	#5e81ac80
@@ -258,7 +261,7 @@ bar {
         set $ubgcolor   #bf616a 
 
         #			Border		Background		Text		Indicator
-        client.focused		$bgcolor	$bgcolor		$textcolor	$bgcolor
-        client.unfocused	$ibgcolor	$ibgcolor		$itextcolor	$ibgcolor
+        client.focused		$bgcolor	$bgcolor		$itextcolor	$bgcolor
+        client.unfocused	$ibgcolor	$ibgcolor		$textcolor	$ibgcolor
         client.focused_inactive	$ibgcolor	$ibgcolor		$itextcolor	$ibgcolor
         client.urgent		$ubgcolor	$ubgcolor		$textcolor	$ubgcolor
