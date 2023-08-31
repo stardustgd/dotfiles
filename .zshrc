@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+#
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -12,4 +12,9 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 alias vim="nvim"
 alias chargingnotify=~/.local/bin/chargingnotify
 
+# z directory jumper
 . ~/.config/scripts/z.sh
+
+# Case Insensitive Autocomplete
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
