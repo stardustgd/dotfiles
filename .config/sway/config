@@ -6,8 +6,7 @@ set $right l
 set $term alacritty
 set $menu rofi -show run
 
-# font pango:Droid Sans Mono 14 
-font pango:monospace 1
+font monospace 0
 
 # Display Wallpaper
 output * bg ~/.wallpapers/yuru-chill.jpg fill
@@ -17,6 +16,9 @@ bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5"
 
 # Start dunst
 exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
+
+# Start polkit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Touchpad configuration
 input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
@@ -61,10 +63,18 @@ exec swayidle -w \
         bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_down
 
         # Screenshot
-        # bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy    
-        # bindsym Shift+Print exec grim - | wl-copy    
         bindsym $mod+Shift+s exec ~/.config/scripts/screenshot.sh area
         bindsym Shift+Print exec ~/.config/scripts/screenshot.sh screen
+
+        # Airplane mode
+        bindsym XF86RFKill exec --no-startup-id ~/.config/scripts/airplane_mode.sh
+
+        # Trackpad key
+        bindsym XF86TouchpadOn exec notify-send "Touchpad" "Enabled" -i ~/.local/share/icons/trackpad.png -t 3000 -r 9988
+        bindsym XF86TouchpadOff exec notify-send "Touchpad" "Disabled" -i ~/.local/share/icons/trackpad-lock.png -t 3000 -r 9988
+
+        # Calculator key
+        bindsym XF86Calculator exec rofi -show calc -modi calc -no-show-match -no-sort
 
 ### Key bindings
 #
@@ -112,7 +122,7 @@ exec swayidle -w \
         bindsym $mod+a focus parent
         
         # Exit sway (logs you out of your Wayland session)
-        bindsym Ctrl+Alt+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+        bindsym Ctrl+Alt+Delete exec swaynag -t nord -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -186,6 +196,10 @@ exec swayidle -w \
         assign [class="zoom"] → 9
         assign [class="Steam"] → 10
 
+        # Autostart programs
+        exec discord
+        exec firefox
+
         # https://github.com/ValveSoftware/steam-for-linux/issues/1040
         for_window [class="^Steam$" title="^Friends$"] floating enable
         for_window [class="^Steam$" title="Steam - News"] floating enable
@@ -208,6 +222,12 @@ exec swayidle -w \
         for_window [app_id="imv"] floating enable
         for_window [app_id="zathura"] floating enable, resize set 1600 900
         for_window [app_id="pavucontrol"] floating enable
+        for_window [app_id="spt"] floating enable, resize set 1600 900
+        for_window [app_id="ranger"] floating enable, resize set 1600 900
+
+        # Open terminal apps
+        bindsym $mod+m exec "pgrep -f '^$term --class spt,spt -e spt' || $term --class spt,spt -e spt"
+        bindsym $mod+u exec "pgrep -f '^$term --class ranger,ranger -e ranger' || $term --class ranger,ranger -e ranger"
 #
 # Resizing containers:
 #
@@ -251,7 +271,6 @@ bar {
 #
 # Window colors:
 #
-        # set $bgcolor    #5e81ac
         set $bgcolor    #5e81ac
         set $ibgcolor   #2e3440
         set $fws	#5e81ac80
@@ -265,3 +284,9 @@ bar {
         client.unfocused	$ibgcolor	$ibgcolor		$textcolor	$ibgcolor
         client.focused_inactive	$ibgcolor	$ibgcolor		$itextcolor	$ibgcolor
         client.urgent		$ubgcolor	$ubgcolor		$textcolor	$ubgcolor
+#
+# Scratchpad:
+#
+        
+        bindsym $mod+minus move scratchpad
+        bindsym $mod+Shift+minus scratchpad show
