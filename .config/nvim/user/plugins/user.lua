@@ -1,16 +1,28 @@
 return {
-  {
-    "shaunsingh/nord.nvim",
-    -- require('nord').set()
-  },
+  { "shaunsingh/nord.nvim" },
+  { "vladdoster/remember.nvim" },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" }
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     "xiyaowong/transparent.nvim",
     lazy = false
-  }
+  },
+  {
+    "andweeb/presence.nvim",
+    lazy = false,
+    buttons = false,
+  },
+  {
+    "ThePrimeagen/vim-be-good",
+    lazy = false
+  },
+  {
+    "NStefan002/speedtyper.nvim",
+    cmd = "Speedtyper",
+    opts = {}
+},
 }
