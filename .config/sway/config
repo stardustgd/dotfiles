@@ -10,13 +10,14 @@ set $polkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 set $scripts ~/.config/scripts/
 set $icons ~/.local/share/icons/
+set $wallpapers ~/.wallpapers/
 
 include /etc/sway/config.d/*
 
 font monospace 0
 
 # Display Wallpaper
-output * bg ~/.wallpapers/yuru-chill.jpg fill
+output * bg $wallpapers/yuru-chill.jpg fill
 
 # swaylock
 bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5 --grace 2"
