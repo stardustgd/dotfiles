@@ -97,13 +97,23 @@ compdef _directories md
 alias tree='tree -a -I .git'
 alias vim='nvim'
 alias chargingnotify='~/.local/bin/chargingnotify'
+alias batterynotify='~/.local/bin/batterynotify'
+alias weather='curl wttr.in'
+alias ucivpn='/opt/cisco/anyconnect/bin/vpnui'
+alias todo='~/dev/todo-rs/target/debug/todo-rs ~/dev/todo-rs/TODO'
 
 # z directory jumper
 . ~/.config/scripts/z.sh
 
 # Add flags to existing aliases.
-alias ls="${aliases[ls]:-ls} -A"
+# alias ls="${aliases[ls]:-ls} -A"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
+
+# Wayland Fix
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_SESSION_TYPE=wayland
+export GDK_BACKEND="wayland,x11"
+export MOZ_ENABLE_WAYLAND=1
