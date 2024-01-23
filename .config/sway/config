@@ -3,22 +3,35 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 set $term alacritty
 set $menu rofi -show run
+set $polkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+set $scripts ~/.config/scripts/
+set $icons ~/.local/share/icons/
+
+include /etc/sway/config.d/*
 
 font monospace 0
 
 # Display Wallpaper
 output * bg ~/.wallpapers/yuru-chill.jpg fill
 
-# Betterlockscreen
-bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5"
+# swaylock
+bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5 --grace 2"
 
 # Start dunst
 exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 
+# Start NetworkManager tray
+exec nm-applet --indicator
+
 # Start polkit
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec $polkit
+
+# Start spotifyd
+exec systemctl start spotifyd.service --user
 
 # Touchpad configuration
 input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
@@ -39,39 +52,38 @@ exec_always {
 
 # Idle configuration
 exec swayidle -w \
-         timeout 300 'swaylock -fF --effect-blur 10x10 --fade-in 0.5' \
+         timeout 600 'swaylock -fF --effect-blur 10x10 --fade-in 0.5 --grace 2' \
          before-sleep 'swaylock -fF --effect-blur 10x10 --fade-in 0.5' \
 #
 # Media keys:
-#
         # Audio control
-        bindsym XF86AudioMicMute exec --no-startup-id ~/.config/scripts/mic_mute.sh
-        bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_up
-        bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_down
-        bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/volume_brightness.sh volume_mute
-        # bindsym XF86AudioPlayPause exec --no-startup-id ~/.config/scripts/volume_brightness.sh play_pause
-        bindsym XF86AudioPause exec --no-startup-id ~/.config/scripts/volume_brightness.sh play_pause
-        bindsym XF86AudioPlay exec --no-startup-id ~/.config/scripts/volume_brightness.sh play_pause
-        bindsym XF86AudioNext exec --no-startup-id ~/.config/scripts/volume_brightness.sh next_track
-        bindsym XF86AudioPrev exec --no-startup-id ~/.config/scripts/volume_brightness.sh prev_track
+        bindsym XF86AudioMicMute exec --no-startup-id $scripts/mic_mute.sh
+        bindsym XF86AudioRaiseVolume exec --no-startup-id $scripts/volume_brightness.sh volume_up
+        bindsym XF86AudioLowerVolume exec --no-startup-id $scripts/volume_brightness.sh volume_down
+        bindsym XF86AudioMute exec --no-startup-id $scripts/volume_brightness.sh volume_mute
+        # bindsym XF86AudioPlayPause exec --no-startup-id $scripts/volume_brightness.sh play_pause
+        bindsym XF86AudioPause exec --no-startup-id $scripts/volume_brightness.sh play_pause
+        bindsym XF86AudioPlay exec --no-startup-id $scripts/volume_brightness.sh play_pause
+        bindsym XF86AudioNext exec --no-startup-id $scripts/volume_brightness.sh next_track
+        bindsym XF86AudioPrev exec --no-startup-id $scripts/volume_brightness.sh prev_track
 
         # Brightness control
-        bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/volume_brightness.sh brightness_up
-        bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh brightness_down
+        bindsym XF86MonBrightnessUp exec --no-startup-id $scripts/volume_brightness.sh brightness_up
+        bindsym XF86MonBrightnessDown exec --no-startup-id $scripts/volume_brightness.sh brightness_down
         # increase brightness by 1
-        bindsym Shift+XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_up
-        bindsym Shift+XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/volume_brightness.sh low_brightness_down
+        bindsym Shift+XF86MonBrightnessUp exec --no-startup-id $scripts/volume_brightness.sh low_brightness_up
+        bindsym Shift+XF86MonBrightnessDown exec --no-startup-id $scripts/volume_brightness.sh low_brightness_down
 
         # Screenshot
-        bindsym $mod+Shift+s exec ~/.config/scripts/screenshot.sh area
-        bindsym Shift+Print exec ~/.config/scripts/screenshot.sh screen
+        bindsym $mod+Shift+s exec $scripts/screenshot.sh area
+        bindsym Shift+Print exec $scripts/screenshot.sh screen
 
         # Airplane mode
-        bindsym XF86RFKill exec --no-startup-id ~/.config/scripts/airplane_mode.sh
+        bindsym XF86RFKill exec --no-startup-id $scripts/airplane_mode.sh
 
         # Trackpad key
-        bindsym XF86TouchpadOn exec notify-send "Touchpad" "Enabled" -i ~/.local/share/icons/trackpad.png -t 3000 -r 9988
-        bindsym XF86TouchpadOff exec notify-send "Touchpad" "Disabled" -i ~/.local/share/icons/trackpad-lock.png -t 3000 -r 9988
+        bindsym XF86TouchpadOn exec notify-send "Touchpad" "Enabled" -i $icons/trackpad.png -t 3000 -r 9988
+        bindsym XF86TouchpadOff exec notify-send "Touchpad" "Disabled" -i $icons/trackpad-lock.png -t 3000 -r 9988
 
         # Calculator key
         bindsym XF86Calculator exec rofi -show calc -modi calc -no-show-match -no-sort
@@ -224,11 +236,16 @@ exec swayidle -w \
         for_window [app_id="pavucontrol"] floating enable
         for_window [app_id="spt"] floating enable, resize set 1600 900
         for_window [app_id="ranger"] floating enable, resize set 1600 900
+        for_window [app_id="todo"] floating enable, resize set 1600 900
 
         # Open terminal apps
         bindsym $mod+m exec "pgrep -f '^$term --class spt,spt -e spt' || $term --class spt,spt -e spt"
         bindsym $mod+u exec "pgrep -f '^$term --class ranger,ranger -e ranger' || $term --class ranger,ranger -e ranger"
-#
+
+        bindsym $mod+p exec thunar
+
+        bindsym $mod+o exec firefox
+        
 # Resizing containers:
 #
 mode "resize" {
@@ -287,6 +304,5 @@ bar {
 #
 # Scratchpad:
 #
-        
         bindsym $mod+minus move scratchpad
         bindsym $mod+Shift+minus scratchpad show
