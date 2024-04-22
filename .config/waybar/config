@@ -1,9 +1,8 @@
 {
     "position": "top", 
     "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/weather"],
-    "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
-    // Modules configuration
+    "modules-left": ["sway/workspaces", "custom/weather", "sway/scratchpad", "sway/mode"],
+    "modules-right": ["pulseaudio", "battery", "custom/date", "clock", "tray"],
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
@@ -14,25 +13,29 @@
              		"3": "󰭹",
              		"4": "󰉋",
              		"5": "󰓇",
-             		"6": "󱈸",
+             		"6": "󰂾",
              		"7": "󰇘",
              		"8": "󰖲",
              		"9": "󰕧",
              		"10": "󰓓"
          }
      },
+    "tray": {
+    "icon-size": 18,
+    "spacing": 10
+    },
     "custom/weather": {
        "format": "{}°",
        "tooltip": true,
        "interval": 3600,
-       "exec": "wttrbar --hide-conditions --main-indicator temp_F --fahrenheit --date-format \"%m/%d\"",
+       "exec": "~/dev/wttrbar/target/release/wttrbar --hide-conditions --main-indicator temp_F --fahrenheit",
        "return-type": "json"
     },
     "sway/mode": {
-        "format": " {}"
+        "format": "{}"
     },
 	"custom/date": {
-    		"format": "󰸗 {}",
+    	"format": "󰸗 {}",
 		"interval": 3600,
 		"exec": "~/.config/waybar/scripts/waybar-date.sh"
 	},
@@ -61,10 +64,11 @@
         	"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 	},
 	"network": {
+	        "interface": "wlp0s20f3",
         	"format-wifi": " {essid}",
-        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-ethernet": "{ipaddr}/{cidr} ",
         	"format-linked": "{ifname} (No IP) ",
-        	"format-disconnected": "󰤮 Disconnected",
+        	"format-disconnected": "󰤮 Disconnected ",
         	"tooltip-format": "{essid}\r{ipaddr}"
         	// "format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
