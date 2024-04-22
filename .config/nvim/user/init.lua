@@ -17,6 +17,8 @@ return {
       -- Recenter when page up/down
       ["<C-d>"] = {"<C-d>zz", desc = "Move page down"},
       ["<C-u>"] = {"<C-u>zz", desc = "Move page up"},
+      ["Î^Cz"] = {"<BS>", desc = "fix ctrl+backspace"},
+      --imap Î^Cy <BS>
     },
   },
   -- Set colorscheme to use
@@ -31,7 +33,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = false, -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         -- enable format on save for specified filetypes only
         allow_filetypes = {},
         -- disable format on save for specified filetypes
