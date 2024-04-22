@@ -14,7 +14,7 @@ set $wallpapers ~/.wallpapers/
 
 include /etc/sway/config.d/*
 
-font monospace 0
+font monospace 1
 
 # Display Wallpaper
 output * bg $wallpapers/yuru-chill.jpg fill
@@ -25,14 +25,11 @@ bindsym $mod+x exec "swaylock -fF --effect-blur 10x10 --fade-in 0.5 --grace 2"
 # Start dunst
 exec --no-startup-id dunst --config ~/.config/dunst/dunstrc
 
-# Start NetworkManager tray
-exec nm-applet --indicator
+# Start utilities
+exec nm-applet --indicator & $polkit & systemctl start spotifyd.service --user
 
-# Start polkit
-exec $polkit
-
-# Start spotifyd
-exec systemctl start spotifyd.service --user
+# Autostart programs
+exec discord & firefox
 
 # Touchpad configuration
 input "1739:32552:MSFT0001:01_06CB:7F28_Touchpad" {
@@ -209,10 +206,6 @@ exec swayidle -w \
         assign [class="zoom"] → 9
         assign [class="Steam"] → 10
 
-        # Autostart programs
-        exec discord
-        exec firefox
-
         # https://github.com/ValveSoftware/steam-for-linux/issues/1040
         for_window [class="^Steam$" title="^Friends$"] floating enable
         for_window [class="^Steam$" title="Steam - News"] floating enable
@@ -244,7 +237,6 @@ exec swayidle -w \
         bindsym $mod+u exec "pgrep -f '^$term --class ranger,ranger -e ranger' || $term --class ranger,ranger -e ranger"
 
         bindsym $mod+p exec thunar
-
         bindsym $mod+o exec firefox
         
 # Resizing containers:
@@ -280,6 +272,10 @@ bindsym $mod+r mode "resize"
         # Smart borders
         smart_borders on
         smart_gaps on
+        
+        # toggle gaps on/off
+        bindsym $mod+Shift+g gaps inner current set 0, gaps outer current set 0
+        bindsym $mod+g gaps inner current set 10, gaps outer current set 5
 #
 # Status Bar:
 #
@@ -305,5 +301,5 @@ bar {
 #
 # Scratchpad:
 #
-        bindsym $mod+minus move scratchpad
-        bindsym $mod+Shift+minus scratchpad show
+        bindsym $mod+Shift+minus move scratchpad
+        bindsym $mod+minus scratchpad show
