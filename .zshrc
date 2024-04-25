@@ -93,6 +93,11 @@ compdef _directories md
 # Define named directories: ~w <=> Windows home directory on WSL.
 [[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
 
+# sudo !!
+fuck() {
+    sudo $(fc -ln -1)
+}
+
 # Define aliases.
 alias tree='tree -a -I .git'
 alias vim='nvim'
@@ -101,6 +106,8 @@ alias batterynotify='~/.local/bin/batterynotify'
 alias weather='curl wttr.in'
 alias ucivpn='/opt/cisco/anyconnect/bin/vpnui'
 alias todo='~/dev/todo-rs/target/debug/todo-rs ~/dev/todo-rs/TODO'
+alias ls='exa --icons'
+alias peaclock="peaclock --config-dir ~/.config/peaclock"
 
 # z directory jumper
 . ~/.config/scripts/z.sh
@@ -117,3 +124,12 @@ export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_SESSION_TYPE=wayland
 export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
+
+export ANDROID_HOME=/home/basti/Android/Sdk/
+export PATH=/home/basti/Android/Sdk/platform-tools:$PATH
+export PATH="/home/basti/tools/Vivado/2023.2/bin:/home/basti/tools/Vitis_HLS/2023.2/bin:$PATH"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+alias vivado='vivado -nojournal -nolog'
+
+export BAT_THEME=Nord
