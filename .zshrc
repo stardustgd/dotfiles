@@ -24,7 +24,7 @@ zstyle ':z4h:' term-shell-integration 'yes'
 zstyle ':z4h:autosuggestions' forward-char 'accept'
 
 # Recursively traverse directories when TAB-completing files.
-zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
 
 # Enable direnv to automatically source .envrc files.
 zstyle ':z4h:direnv'         enable 'no'
@@ -101,10 +101,11 @@ fuck() {
 # Define aliases.
 alias tree='tree -a -I .git'
 alias vim='nvim'
+alias v='nvim'
 alias chargingnotify='~/.local/bin/chargingnotify'
 alias batterynotify='~/.local/bin/batterynotify'
 alias weather='curl wttr.in'
-alias ucivpn='/opt/cisco/anyconnect/bin/vpnui'
+alias ucivpn='/opt/cisco/secureclient/bin/vpnui'
 alias todo='~/dev/todo-rs/target/debug/todo-rs ~/dev/todo-rs/TODO'
 alias ls='exa --icons'
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
@@ -133,3 +134,10 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 alias vivado='vivado -nojournal -nolog'
 
 export BAT_THEME=Nord
+
+# bun completions
+[ -s "/home/basti/.bun/_bun" ] && source "/home/basti/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
