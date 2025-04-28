@@ -102,19 +102,20 @@ fuck() {
 alias tree='tree -a -I .git'
 alias vim='nvim'
 alias v='nvim'
+alias v.='nvim .'
 alias chargingnotify='~/.local/bin/chargingnotify'
 alias batterynotify='~/.local/bin/batterynotify'
 alias weather='curl wttr.in'
 alias ucivpn='/opt/cisco/secureclient/bin/vpnui'
 alias todo='~/dev/todo-rs/target/debug/todo-rs ~/dev/todo-rs/TODO'
-alias ls='exa --icons'
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
-
-# z directory jumper
-. ~/.config/scripts/z.sh
+alias neofetch="fastfetch"
 
 # Add flags to existing aliases.
 # alias ls="${aliases[ls]:-ls} -A"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
